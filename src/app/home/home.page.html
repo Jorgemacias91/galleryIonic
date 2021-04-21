@@ -1,20 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="handleBack()">
+        <ion-icon name="arrow-undo-outline"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+  <ion-label>
+    <ion-title>API</ion-title>
+  </ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let photo of photos" [routerLink]="['/places', photo.id]">
+      <ion-avatar>
+        <ion-img  [src]="photo.url" alt="photo"></ion-img>
+      </ion-avatar>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      <ion-card-content>{{photo.title}}</ion-card-content>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
